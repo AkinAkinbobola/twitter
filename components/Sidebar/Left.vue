@@ -1,13 +1,9 @@
-<script setup lang="ts">
+<script setup>
 
 </script>
 
 <template>
 <div>
-  <LogoTwitter/>
+  <Icon name="mdi:twitter" class="text-blue-300"/>
 </div>
 </template>
-
-<style scoped>
-
-</style>
