@@ -17,8 +17,8 @@ const darkMode = ref(false)
           </div>
 
           <!--        Main-->
-          <main class="md:col-span-6 lg:col-span-7 col-span-12 bg-red-400">
-            fg
+          <main class="md:col-span-6 lg:col-span-7 col-span-12">
+
           </main>
 
           <!--        Right-->
