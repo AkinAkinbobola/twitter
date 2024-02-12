@@ -12,25 +12,25 @@ const {defaultTransition} = useTailwindConfig()
     <NuxtLink
         class="flex gap-4 items-center p-3 text-black dark:text-white dark:bg-dim-900 hover:bg-gray-200 dark:hover:text-black dark:hover:bg-dim-200 rounded-full"
         :class="defaultTransition">
-      <Icon name="ph:hash-straight-bold" class="text-dark h-6 w-6"/>
+      <Icon name="heroicons:hashtag" class="text-dark h-6 w-6"/>
       <p class="text-xl hidden sm:block">Explore</p>
     </NuxtLink>
     <NuxtLink
         class="flex gap-4 items-center p-3 text-black dark:text-white dark:bg-dim-900 hover:bg-gray-200 dark:hover:text-black dark:hover:bg-dim-200 rounded-full"
         :class="defaultTransition">
-      <Icon name="ph:bell-light" class="text-dark h-6 w-6"/>
+      <Icon name="heroicons:bell" class="text-dark h-6 w-6"/>
       <p class="text-xl hidden sm:block">Notifications</p>
     </NuxtLink>
     <NuxtLink
         class="flex gap-4 items-center p-3 text-black dark:text-white dark:bg-dim-900 hover:bg-gray-200 dark:hover:text-black dark:hover:bg-dim-200 rounded-full"
         :class="defaultTransition">
-      <Icon name="ic:sharp-mail-outline" class="text-dark h-6 w-6"/>
+      <Icon name="heroicons:envelope" class="text-dark h-6 w-6"/>
       <p class="text-xl hidden sm:block">Messages</p>
     </NuxtLink>
     <NuxtLink
         class="flex gap-4 items-center p-3 text-black dark:text-white dark:bg-dim-900 hover:bg-gray-200 dark:hover:text-black dark:hover:bg-dim-200 rounded-full"
         :class="defaultTransition">
-      <Icon name="ic:baseline-bookmark-border" class="text-dark h-6 w-6"/>
+      <Icon name="heroicons:bookmark" class="text-dark h-6 w-6"/>
       <p class="text-xl hidden sm:block">Bookmarks</p>
     </NuxtLink>
     <NuxtLink
@@ -42,7 +42,7 @@ const {defaultTransition} = useTailwindConfig()
     <NuxtLink
         class="flex gap-4 items-center p-3 text-black dark:text-white dark:bg-dim-900 hover:bg-gray-200 dark:hover:text-black dark:hover:bg-dim-200 rounded-full"
         :class="defaultTransition">
-      <Icon name="material-symbols:account-circle-full" class="text-dark h-6 w-6"/>
+      <Icon name="heroicons:user" class="text-dark h-6 w-6"/>
       <p class="text-xl hidden sm:block">Profile</p>
     </NuxtLink>
     <NuxtLink
@@ -53,8 +53,8 @@ const {defaultTransition} = useTailwindConfig()
     </NuxtLink>
   </div>
 </template>
-<script>
-export default {
-  name: 'Tab'
+<style>
+.active{
+  font-weight: bold;
 }
-</script>
+</style>

@@ -7,23 +7,26 @@ const darkMode = ref(false)
     <div class="bg-white dark:bg-dim-900">
       <div class="min-h-full">
         <div class="grid grid-cols-12 mx-auto sm:px-6 lg:max-w-7xl
-      lg:px-8 lg:gap-5">
+      lg:px-8">
           <!--        Left-->
-          <div class="md:block xs:col-span-1 xl:col-span-2">
+          <div class="hidden md:block xs:col-span-1 lg:col-span-2">
             <div
                 class="sticky top-0">
-              <SidebarLeft class="cursor-pointer"/>
+              <SidebarLeft/>
             </div>
           </div>
 
           <!--        Main-->
-          <div>
-
-          </div>
+          <main class="md:col-span-6 lg:col-span-7 col-span-12 bg-red-400">
+            fg
+          </main>
 
           <!--        Right-->
-          <div>
-
+          <div class="hidden md:block xs:col-span-1 lg:col-span-3">
+            <div
+                class="sticky top-0">
+              <SidebarRight/>
+            </div>
           </div>
 
         </div>
