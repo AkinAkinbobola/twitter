@@ -1,5 +1,6 @@
 import {sendError} from 'h3'
 import {createUser} from "~/server/db/users.js";
+import {userTransformer} from "~/server/transformers/users.js";
 
 export default defineEventHandler(async (event) => {
     const body = await readBody(event);
@@ -23,5 +24,6 @@ export default defineEventHandler(async (event) => {
         password,
         profileImage: 'https://i.kym-cdn.com/entries/icons/facebook/000/047/210/nah_id_win.jpg'
     }
-    return createUser(userData);
+    const user = await createUser(userData);
+    return userTransformer(user);
 });
