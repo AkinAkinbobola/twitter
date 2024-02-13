@@ -47,7 +47,7 @@ const whoToFollowItems = ref([
             </div>
             <div class="flex flex-col">
               <h1 class="text-sm font-bold text-gray-900 dark:text-white">{{item.name}}</h1>
-              <p class="text-xs text-gray">{{item.handle}}</p>
+              <p class="text-xs text-gray-500">{{item.handle}}</p>
             </div>
           </div>
 

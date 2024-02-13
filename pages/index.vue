@@ -6,10 +6,9 @@ const darkMode = ref(false)
   <div :class="{'dark': darkMode}">
     <div class="bg-white dark:bg-dim-900">
       <div class="min-h-full">
-        <div class="grid grid-cols-12 mx-auto sm:px-6 lg:max-w-7xl
-      lg:px-8">
+        <div class="grid grid-cols-12 md:max-w-7xl md:px-2">
           <!--        Left-->
-          <div class="hidden md:block xs:col-span-1 lg:col-span-2">
+          <div class="hidden md:block xs:col-span-1 md:col-span-2">
             <div
                 class="sticky top-0">
               <SidebarLeft/>
@@ -17,12 +16,11 @@ const darkMode = ref(false)
           </div>
 
           <!--        Main-->
-          <main class="md:col-span-6 lg:col-span-7 col-span-12">
-
+          <main class="md:col-span-7 col-span-12">
           </main>
 
           <!--        Right-->
-          <div class="hidden md:block xs:col-span-1 lg:col-span-3">
+          <div class="hidden md:block col-span-3">
             <div
                 class="sticky top-0">
               <SidebarRight/>
