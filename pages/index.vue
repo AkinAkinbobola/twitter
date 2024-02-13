@@ -1,5 +1,6 @@
 <script setup>
 const darkMode = ref(false)
+const loading = ref(false)
 </script>
 
 <template>
@@ -17,6 +18,7 @@ const darkMode = ref(false)
 
           <!--        Main-->
           <main class="md:col-span-7 col-span-12">
+            <MainSection title="Home" :loading="loading"/>
           </main>
 
           <!--        Right-->
