@@ -1,6 +1,5 @@
 <script setup>
 const {modelValue, label, placeholder, type} = defineProps(["modelValue", "label", "placeholder", "type"])
-// const emits = defineEmits(["update:modelValue"])
 </script>
 
 <template>
