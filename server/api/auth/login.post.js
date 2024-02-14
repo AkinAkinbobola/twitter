@@ -28,8 +28,11 @@ export default defineEventHandler(async (event) => {
             statusMessage: 'Invalid username or password'
         }))
     }
-    const {accessToken, refreshToken} = generateTokens();
+    const {accessToken, refreshToken} = generateTokens(user);
 
 
-    return user;
+    return {
+        accessToken,
+        refreshToken
+    };
 });
