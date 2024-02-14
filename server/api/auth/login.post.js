@@ -2,13 +2,14 @@ import {sendError} from 'h3'
 import {getUserByUsername} from "~/server/db/users.js";
 import {userTransformer} from "~/server/transformers/users.js";
 import bcrypt from "bcrypt";
-import {generateTokens} from "~/server/utils/jwt.js";
+import {generateTokens, sendRefreshToken} from "~/server/utils/jwt.js";
+import {createRefreshToken} from "~/server/db/refreshTokens.js";
 
 export default defineEventHandler(async (event) => {
     const body = await readBody(event);
     const {username, password} = body;
 
-    if(!username || !password) {
+    if (!username || !password) {
         sendError(event, createError({
             statusCode: 400,
             statusMessage: 'All fields are required'
@@ -22,7 +23,7 @@ export default defineEventHandler(async (event) => {
             statusMessage: 'Invalid username or password'
         }))
     }
-    if(!bcrypt.compareSync(password, user.password)){
+    if (!bcrypt.compareSync(password, user.password)) {
         sendError(event, createError({
             statusCode: 401,
             statusMessage: 'Invalid username or password'
@@ -30,9 +31,13 @@ export default defineEventHandler(async (event) => {
     }
     const {accessToken, refreshToken} = generateTokens(user);
 
-
+    await createRefreshToken({
+        token: refreshToken,
+        userId: user.id
+    });
+    sendRefreshToken(event, refreshToken);
     return {
         accessToken,
-        refreshToken
+        user: userTransformer(user)
     };
 });

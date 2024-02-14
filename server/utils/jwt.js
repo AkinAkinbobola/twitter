@@ -21,3 +21,11 @@ export const generateTokens = (user) => {
         refreshToken
     }
 }
+
+export const sendRefreshToken = (event, refreshToken) => {
+    setCookie(event, 'refreshToken', refreshToken, {
+        httpOnly: true,
+        sameSite: true,
+        path: '/refresh_token'
+    })
+}
