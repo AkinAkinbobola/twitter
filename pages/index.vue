@@ -6,7 +6,7 @@ const loading = ref(false)
 <template>
   <div :class="{'dark': darkMode}">
     <div class="bg-white dark:bg-dim-900">
-      <div class="min-h-full">
+      <div class="min-h-full" v-if="false">
         <div class="grid grid-cols-12 md:max-w-7xl md:px-2">
           <!--        Left-->
           <div class="hidden md:block xs:col-span-1 md:col-span-2">
@@ -30,6 +30,10 @@ const loading = ref(false)
           </div>
 
         </div>
+      </div>
+
+      <div v-else>
+        <Auth/>
       </div>
     </div>
   </div>
