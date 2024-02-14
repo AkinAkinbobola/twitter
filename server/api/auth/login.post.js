@@ -2,6 +2,7 @@ import {sendError} from 'h3'
 import {getUserByUsername} from "~/server/db/users.js";
 import {userTransformer} from "~/server/transformers/users.js";
 import bcrypt from "bcrypt";
+import {generateTokens} from "~/server/utils/jwt.js";
 
 export default defineEventHandler(async (event) => {
     const body = await readBody(event);
@@ -27,6 +28,8 @@ export default defineEventHandler(async (event) => {
             statusMessage: 'Invalid username or password'
         }))
     }
+    const {accessToken, refreshToken} = generateTokens();
 
-    return userTransformer(user);
+
+    return user;
 });
