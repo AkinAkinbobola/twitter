@@ -19,13 +19,13 @@ export default defineEventHandler(async (event) => {
     const user = await getUserByUsername(username);
     if (!user) {
         sendError(event, createError({
-            statusCode: 401,
+            statusCode: 400,
             statusMessage: 'Invalid username or password'
         }))
     }
     if (!bcrypt.compareSync(password, user.password)) {
         sendError(event, createError({
-            statusCode: 401,
+            statusCode: 400,
             statusMessage: 'Invalid username or password'
         }))
     }

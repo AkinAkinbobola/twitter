@@ -11,8 +11,30 @@ export default () => {
         const authUser = useAuthUser()
         authUser.value = newUser
     }
+    const refreshToken = () => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const data = await $fetch('/api/auth/refresh')
+                setToken(data.access_token)
+                resolve(true)
+            } catch (error) {
+                reject(error)
+            }
+        })
+    }
+    const initAuth = () => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                await refreshToken()
+                resolve(true)
 
-    const login = ({ username, password }) => {
+            } catch (error) {
+                reject(error)
+            }
+        })
+    }
+
+    const login = ({username, password}) => {
         return new Promise(async (resolve, reject) => {
             try {
                 const data = await $fetch('/api/auth/login', {
@@ -35,6 +57,7 @@ export default () => {
 
     return {
         login,
-        useAuthUser
+        useAuthUser,
+        initAuth
     }
 }
