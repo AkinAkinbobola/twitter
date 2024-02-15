@@ -37,3 +37,11 @@ export const decodeRefreshToken = (token) => {
         return null
     }
 }
+export const decodeAccessToken = (token) => {
+    try {
+        const config = useRuntimeConfig();
+        return jwt.verify(token, config.jwtAccessSecret)
+    }catch (e) {
+        return null
+    }
+}
