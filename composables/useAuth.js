@@ -1,21 +1,40 @@
 export default () => {
-    const login = ({username, password}) => {
+    const useAuthToken = () => useState('auth_token')
+    const useAuthUser = () => useState('auth_user')
+
+    const setToken = (newToken) => {
+        const authToken = useAuthToken()
+        authToken.value = newToken
+    }
+
+    const setUser = (newUser) => {
+        const authUser = useAuthUser()
+        authUser.value = newUser
+    }
+
+    const login = ({ username, password }) => {
         return new Promise(async (resolve, reject) => {
             try {
-                const data = $fetch("/api/auth/login", {
-                    method: "POST",
+                const data = await $fetch('/api/auth/login', {
+                    method: 'POST',
                     body: {
                         username,
                         password
                     }
                 })
-                console.log(data)
-            } catch (e) {
 
+                setToken(data.access_token)
+                setUser(data.user)
+
+                resolve(true)
+            } catch (error) {
+                reject(error)
             }
         })
     }
+
     return {
-        login
+        login,
+        useAuthUser
     }
 }

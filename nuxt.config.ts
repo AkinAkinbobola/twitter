@@ -2,7 +2,8 @@
 export default defineNuxtConfig({
   modules: [
     'nuxt-icon',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
+    '@sidebase/nuxt-auth'
   ],
   runtimeConfig: {
     jwtAccessSecret: process.env.JWT_ACCESS_TOKEN_SECRET,

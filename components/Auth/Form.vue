@@ -1,20 +1,22 @@
 <script setup>
-const {login} = useAuth();
 const data = ref({
   username: '',
   password: '',
   loading: false
 })
 const handleLogin = async () => {
-  try{
-    const {username, password} = data.value
-    data.value.loading = true
-    const {response} = await login({username, password});
+  const { login } = useAuth()
 
-  }catch (e) {
-    console.log(e)
-  }finally {
-    data.value.loading = false
+  data.loading = true
+  try {
+    await login({
+      username: data.value.username,
+      password: data.value.password
+    })
+  } catch (error) {
+    console.log(error)
+  } finally {
+    data.loading = false
   }
 }
 </script>
