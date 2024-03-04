@@ -1,34 +1,26 @@
 <script setup>
-const data = ref({
-  username: '',
-  password: '',
-  loading: false
-})
-const handleLogin = async () => {
-  const { login } = useAuth()
+const supabase = useSupabaseClient()
 
-  data.loading = true
-  try {
-    await login({
-      username: data.value.username,
-      password: data.value.password
-    })
-  } catch (error) {
-    console.log(error)
-  } finally {
-    data.loading = false
-  }
+const credentials = ref({
+  email: '',
+  password: ''
+})
+
+const handleLogin = async () => {
+  const {data, error} = await supabase.auth.signInWithPassword({
+    email: credentials.value.email,
+    password: credentials.value.password,
+  })
+  navigateTo('/')
 }
 </script>
 
 <template>
   <div>
-    <div class="pt-5 space-y-6">
-      <UIInput label="Username" placeholder="@username" type="text" v-model="data.username"/>
-      <UIInput label="Password" placeholder="********" type="password" v-model="data.password"/>
-      <div>
-        <button type="submit" @click="handleLogin">Log In</button>
-      </div>
+    <UIInput label="Email" placeholder="@email" type="email" v-model="credentials.email"/>
+    <UIInput label="Password" placeholder="********" type="password" v-model="credentials.password"/>
+    <div>
+      <button type="submit" @click="handleLogin">Log In</button>
     </div>
   </div>
 </template>
