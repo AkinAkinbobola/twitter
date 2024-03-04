@@ -6,7 +6,9 @@ export default defineNuxtConfig({
         '@nuxt/image',
         'nuxt-icon',
         '@vueuse/nuxt',
-        '@nuxtjs/supabase'
+        '@nuxtjs/supabase',
+        '@pinia/nuxt',
+        '@pinia-plugin-persistedstate/nuxt',
     ],
     colorMode: {
         classSuffix: ''

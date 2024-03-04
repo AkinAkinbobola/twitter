@@ -1,13 +1,7 @@
 <script setup>
 const darkMode = ref(false)
 const loading = ref(false)
-const supabase = useSupabaseClient()
 const user = useSupabaseUser()
-
-const handleLogOut = async () => {
-  const {error} = await supabase.auth.signOut()
-  navigateTo('/login')
-}
 </script>
 
 <template>
