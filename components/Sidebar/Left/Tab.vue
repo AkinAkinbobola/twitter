@@ -1,8 +1,18 @@
 <script setup>
 const {defaultTransition} = useTailwindConfig()
+const supabase = useSupabaseClient()
+const userStore = useUserStore()
+const handleLogout = async () => {
+  userStore.isLoading = true
+  const {error} = await supabase.auth.signOut()
+  if (!error) {
+    userStore.isLoading = false
+  }
+}
 </script>
 <template>
   <div class="w-min flex flex-col space-y-3 mt-2">
+    <button @click="handleLogout">Logout</button>
     <NuxtLink
         class="flex gap-4 items-center p-3 text-black dark:text-white dark:bg-dim-900 hover:bg-gray-200 dark:hover:text-black dark:hover:bg-dim-200 rounded-full"
         :class="defaultTransition" to="/">
@@ -54,7 +64,7 @@ const {defaultTransition} = useTailwindConfig()
   </div>
 </template>
 <style>
-.active{
+.active {
   font-weight: bold;
 }
 </style>

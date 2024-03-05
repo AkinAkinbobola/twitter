@@ -2,12 +2,13 @@
 const darkMode = ref(false)
 const loading = ref(false)
 const user = useSupabaseUser()
+const userStore = useUserStore()
 </script>
 
 <template>
   <div :class="{'dark': darkMode}">
     <div class="bg-white dark:bg-dim-900">
-      <LoadingPage v-if="false"/>
+      <LoadingPage v-if="userStore.isLoading"/>
 
       <div class="min-h-full">
         <div class="grid grid-cols-12 md:max-w-7xl md:px-2" v-if="user">

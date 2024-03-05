@@ -1,16 +1,20 @@
 <script setup>
 const supabase = useSupabaseClient()
-
+const userStore = useUserStore()
 const credentials = ref({
   email: '',
   password: ''
 })
 
 const handleLogin = async () => {
+  userStore.isLoading = true
   const {data, error} = await supabase.auth.signInWithPassword({
     email: credentials.value.email,
     password: credentials.value.password,
   })
+  if(!error){
+    userStore.isLoading = false
+  }
   navigateTo('/')
 }
 </script>
